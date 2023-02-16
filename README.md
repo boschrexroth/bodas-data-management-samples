@@ -23,7 +23,7 @@
 <!-- ABOUT THE PROJECT -->
 ## Introduction
 
-This guide provides sample codes that you can reuse for pulling/pushing data from/to you BODAS Connect Data Management Instance. This guide will not show you how to implement your functionality. The examples are written in Python. Example written in other languages will be added soon.
+This guide provides sample codes that you can reuse for pulling/pushing data from/to your BODAS Connect Data Management Instance. This guide will not show you how to implement your functionality. The examples are written in Python. Example written in other languages will be added soon.
 
 
 <!-- GETTING STARTED -->
