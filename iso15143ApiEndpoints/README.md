@@ -2,7 +2,7 @@
 
 These endpoints allow you to pull data from your Bodas Connec Data Portal.
 
-## Extended ISO 15143
+## ISO 15143-3 (AEMP 2.0)
 
 The [ISO Standard 15143-3](https://www.iso.org/standard/67556.html) 
 The standard describes how to send status data from a telematics provider's server to third-party client applications over the Internet. 
