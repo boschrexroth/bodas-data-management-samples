@@ -44,7 +44,7 @@ Some topics are not covered by this programming guides and are prerequisites for
 <!-- LICENSE -->
 ## License
 
-All sample codes are distributed under the MIT License. See `LICENSE` for more information.
+All sample codes are distributed under the MIT License. See [LICENSE](https://opensource.org/license/mit/) for more information.
 
 
 <!-- CONTACT -->
