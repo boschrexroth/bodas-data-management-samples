@@ -6,7 +6,7 @@ These endpoints allow you to pull data from your Bodas Connec Data Portal.
 
 The [ISO Standard 15143-3](#https://www.iso.org/standard/67556.html) The standard describes how to send status data from a telematics provider's server to third-party client applications over the Internet. 
 
-The OEM ISO NUmber (machine VIN (Vehicle Identification Number) or PIN (Personal Identification Number)) is used as identifier for pulling data.
+The OEM ISO Number (machine VIN = Vehicle Identification Number or PIN = Personal Identification Number) is used as identifier for pulling data.
 
 ## Authentication
 For information (see the list below) about using the [REST API Endpoints](#endpoints), please contact your instance owner.
