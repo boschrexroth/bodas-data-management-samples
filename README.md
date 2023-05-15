@@ -39,7 +39,7 @@ Some topics are not covered by this programming guides and are prerequisites for
 
 ## Sample Codes
 
-* [iso15143ApiEndpoints](#) -- Pull machine and fleet data with [ISO Standard 15143-3](#https://www.iso.org/standard/67556.html)
+* [iso15143ApiEndpoints](#) -- Pull machine and fleet data with [ISO Standard 15143-3](https://www.iso.org/standard/67556.html)
 
 <!-- LICENSE -->
 ## License
