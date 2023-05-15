@@ -4,31 +4,34 @@ These endpoints allow you to pull data from your Bodas Connec Data Portal.
 
 ## Extended ISO 15143
 
-The [ISO Standard 15143-3](#https://www.iso.org/standard/67556.html) The standard describes how to send status data from a telematics provider's server to third-party client applications over the Internet. Furthermore, Bodas Connect provides additional data elements based on the data uploaded by your machines. To get the extended list of additional data elements, contact your Bodas Connect instance owner.
+The [ISO Standard 15143-3](#https://www.iso.org/standard/67556.html) The standard describes how to send status data from a telematics provider's server to third-party client applications over the Internet. 
 
-In this version the Bodas Connect machine ID is used for pulling data instead of using the machine VIN/PIN.
+The OEM ISO NUmber (machine VIN (Vehicle Identification Number) or PIN (Personal Identification Number)) is used as identifier for pulling data.
 
 ## Authentication
 For information (see the list below) about using the [REST API Endpoints](#endpoints), please contact your instance owner.
+Following information are needed:
 
-- clientID: Oauth2 client ID of your fleet,
-- secret: Oauth2 secret of your fleet,
-- scope: Oauth2 scope of your fleet,
+- Client ID: OAuth2 client ID of your fleet,
+- Client secret: OAuth2 secret of your fleet,
+- scope: OAuth2 scope of your fleet,
 - projectID: Bodas Connect project ID,
-- fleetID: Your fleet ID
+- fleetId: Your fleet ID 
 
 ## Endpoints
+There are two classifications of endpoints: snapshot (fleet or single piece of equipment) and timeseries.
+
 Base URL: https://bosch-iot-insights.com/r/{projectId}/bodas/
 
 - Fleet snapshot [{fleetId}/Fleet/{pageNumber}](#get-{fleetId}Fleet{pageNumber}) <br/>
-- Machine (Single-element) snapshot [{fleetId}/Fleet/Equipment/{machineID}](#get-{fleetId}FleetEquipment{machineID}) <br/>
-- Timeseries data [{fleetId}/Fleet/Equipment/{machineID}/{dataElement}/{startDateUTC}/{endDateUTC}/{pageNumber}](#get-{fleetId}FleetEquipment{machineID}{dataElement}{startDateUTC}{endDateUTC}{pageNumber}) <br/>
+- Machine (Single-element) snapshot [{fleetId}/Fleet/Equipment/{machineID}](#get-{fleetId}FleetEquipment{identifier}) <br/>
+- Timeseries data [{fleetId}/Fleet/Equipment/{machineID}/{dataElement}/{startDateUTC}/{endDateUTC}/{pageNumber}](#get-{fleetId}FleetEquipment{identifier}{dataElement}{startDateUTC}{endDateUTC}{pageNumber}) <br/>
 
 ___
 
 ### GET {fleetId}/Fleet/{pageNumber}
 
-Get asnaphots of all machines in the fleet.
+Get a snaphots of all machines in the fleet.
 
 **Parameters**
 
@@ -43,81 +46,77 @@ In this example, the fleet has 2 machines.
 //Get the first page
 [
   {
-    "Equipment": [
-      {
-        "CumulativeOperatingHours": {
-          "Hour": 2053.8,
-          "datetime": "2023-02-08T12:38:02Z"
-        },
-        //EEC1__EngSpeed is not an ISO 15143 data element, but it is included in the results.
-        "EEC1__EngSpeed": {
-          "EEC1__EngSpeed": 1265.3,
-          "EEC1__EngSpeedUnits": "rpm",
-          "datetime": "2023-02-08T12:39:49Z"
-        },
-        "Locations": {
-          "Latitude": 48.424358,
-          "Longitude": 9.935278,
-          "Altitude": 603.6,
-          "AltitudeUnits": "meter",
-          "datetime": "2023-02-08T12:37:29Z"
-        },
-        //EquipmentHeader is extended with Bodas Connect specific identifiers.
-        "EquipmentHeader": {
-          "BodasMachineId": "Machine1",
-          "BodasTelematicsId": "RCU1",
-          "BodasThingId": "project1:model1__RCU1",
-          "Model": "model1",
-          "UnitInstallDateTime": "2021-10-14T17:56:28Z"
-        }
+  "Equipment": [
+    {
+      "Location": {
+        "datetime": "2022-09-23T17:17:39.666Z",
+        "Latitude": 48.479507,
+        "Longitude": 8.929208,
+        "Altitude": 424,
+        "AltitudeUnits": "meter"
       },
-      {
-        "CumulativeOperatingHours": {
-          "Hour": 736.1,
-          "datetime": "2023-02-13T10:20:09Z"
-        },
-        "Locations": {
-          "Latitude": 48.424002,
-          "Longitude": 9.935772,
-          "Altitude": 607.1,
-          "AltitudeUnits": "meter",
-          "datetime": "2023-02-13T10:24:10Z"
-        },
-        //EEC1__EngSpeed is not an ISO 15143 data element, but it is included in the results.
-        "EEC1__EngSpeed": {
-          "EEC1__EngSpeed": 943.2,
-          "EEC1__EngSpeedUnits": "rpm",
-          "datetime": "2023-02-13T13:07:28Z"
-        },
-        //EquipmentHeader is extended with Bodas Connect specific identifiers.
-        "EquipmentHeader": {
-          "BodasMachineId": "Machine2",
-          "BodasTelematicsId": "RCU2",
-          "BodasThingId": "project1:model1__RCU2",
-          "Model": "model1",
-          "UnitInstallDateTime": "2021-11-29T14:26:12Z"
-        }
-      }      
-    ],
-    "links": [
-      {
-        "rel": "self",
-        "href": "/Fleet/1"
+      "FuelUsed": {
+        "datetime": "2022-09-23T17:17:38.342Z",
+        "FuelConsumed": 730,
+        "FuelUnits": "liter"
       },
-      {
-        "rel": "next",
-        "href": "/Fleet/1"
+      "CumulativeOperatingHours": {
+        "datetime": "2022-09-23T17:17:38.343Z",
+        "Hour": 162
       },
-      {
-        "rel": "prev",
-        "href": "/Fleet/1"
-      },
-      {
-        "rel": "last",
-        "href": "/Fleet/1"
+      "EquipmentHeader": {
+        "UnitInstallDateTime": "2023-05-08T10:00:00.000Z",
+        "OEMName": "Rexroth",
+        "Model": "sweeperx200",
+        "EquipmentID": "sn50123",
+        "PIN": "SNP50123123456789"
       }
-    ]
-  }
+    },
+    {
+      "Location": {
+        "datetime": "2022-09-23T17:17:39.666Z",
+        "Latitude": 48.479507,
+        "Longitude": 8.929208,
+        "Altitude": 424,
+        "AltitudeUnits": "meter"
+      },
+      "CumulativeOperatingHours": {
+        "datetime": "2022-09-23T17:17:38.343Z",
+        "Hour": 162
+      },
+      "FuelUsed": {
+        "datetime": "2022-09-23T17:17:38.342Z",
+        "FuelConsumed": 730,
+        "FuelUnits": "liter"
+      },
+      "EquipmentHeader": {
+        "UnitInstallDateTime": "2023-05-08T10:00:00.000Z",
+        "OEMName": "Rexroth",
+        "Model": "sweeperx200",
+        "EquipmentID": "sn50456",
+        "PIN": "SNV50456123456789"
+      }
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/1"
+    },
+    {
+      "rel": "next",
+      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/1"
+    },
+    {
+      "rel": "prev",
+      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/1"
+    },
+    {
+      "rel": "last",
+      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/1"
+    }
+  ]
+}
 ]
 
 or
@@ -125,91 +124,88 @@ or
 // Trying to get the second page (which is empty)
 [
   {
-    "Equipment": [],
-    "links": [
-      {
-        "rel": "self",
-        "href": "/Fleet/2"
-      },
-      {
-        "rel": "next",
-        "href": "/Fleet/1"
-      },
-      {
-        "rel": "prev",
-        "href": "/Fleet/1"
-      },
-      {
-        "rel": "last",
-        "href": "/Fleet/1"
-      }
-    ]
-  }
+  "Equipment": [],
+  "links": [
+    {
+      "rel": "self",
+      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/2"
+    },
+    {
+      "rel": "next",
+      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/1"
+    },
+    {
+      "rel": "prev",
+      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/1"
+    },
+    {
+      "rel": "last",
+      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/1"
+    }
+  ]
+}
 ]
 
 ```
 ___
 
-### GET {fleetId}/Fleet/Equipment/{machineID}
+### GET {fleetId}/Fleet/Equipment/{identifier}
 
-Get snapshot of all data elements (inclusinve Bodas Connect specific datalements) of a machine. 
+Get snapshot of all data elements of a machine. This endpoint provides a snapshot view of a single element. This endpoint is paginated with a default of 100 records per page. 
 
 **Parameters**
 
 |          Name | Required |  Type   | Description  |
 | -------------:|:--------:|:-------:| -------- |
 |     `fleetId` | required | string  | Bodas Connect ID of your fleet. |
-|     `machineID` | required | string  | Bodas Connect ID of your machine. Machine IDs are returned as a result pulling fleet snapshot data. |
+|     `identifier` | required | string  |  OEM ISO Number (PIN or VIN). The identifiers are returned as a result pulling fleet snapshot data. |
 
 **Response Sample**
 
 ```
 [
-    "CumulativeOperatingHours": {
-      "Hour": 736.1,
-      "datetime": "2023-02-13T10:20:09Z"
-    },
-    "Locations": {
-        "Latitude": 48.424002,
-        "Longitude": 9.935772,
-        "Altitude": 607.1,
-        "AltitudeUnits": "meter",
-        "datetime": "2023-02-13T10:24:10Z"
-    },
-    //EEC1__EngSpeed is not an ISO 15143 data element, but it is included in the results.
-    "EEC1__EngSpeed": {
-      "EEC1__EngSpeed": 1244.4,
-      "EEC1__EngSpeedUnits": "rpm",
-      "datetime": "2023-02-13T13:07:28Z"
-    },
-    //EquipmentHeader is extended with Bodas Connect specific identifiers.
-    "EquipmentHeader": {
-        "BodasMachineId": "Machine2",
-        "BodasTelematicsId": "RCU2",
-        "BodasThingId": "project1:model1__RCU2",
-        "Model": "model1",
-        "UnitInstallDateTime": "2021-11-29T14:26:12Z"
-    },
-    "SnapshotTime": "2023-02-13T23:26:12Z",
-    "Version": "0.0.1"
+ {
+  "FuelUsed": {
+    "datetime": "2022-09-23T17:17:38.342Z",
+    "FuelConsumed": 730,
+    "FuelUnits": "liter"
+  },
+  "Location": {
+    "datetime": "2022-09-23T17:17:39.666Z",
+    "Latitude": 48.479507,
+    "Longitude": 8.929208,
+    "Altitude": 424,
+    "AltitudeUnits": "meter"
+  },
+  "CumulativeOperatingHours": {
+    "datetime": "2022-09-23T17:17:38.343Z",
+    "Hour": 162
+  },
+  "EquipmentHeader": {
+    "UnitInstallDateTime": "2023-05-08T10:00:00.000Z",
+    "OEMName": "Rexroth",
+    "Model": "sweeperx200",
+    "EquipmentID": "sn50123",
+    "PIN": "SNP50123123456789"
   }
+}   
 ]
 
 ```
 
 ___
 
-### GET {fleetId}/Fleet/Equipment/{machineID}/{dataElement}/{startDateUTC}/{endDateUTC}/{pageNumber}
+### GET {fleetId}/Fleet/Equipment/{identifier}/{dataElement}/{startDateUTC}/{endDateUTC}/{pageNumber}
 
-Get timeseries data of a data element of a machine.
+Get a view into telematics data for a single construction machine over the specified time.
 
 **Parameters**
 
 |          Name | Required |  Type   | Description  |
 | -------------:|:--------:|:-------:| -------- |
 |     `fleetId` | required | string  | Bodas Connect ID of your fleet. |
-|     `machineID` | required | string  | Bodas Connect ID of your machine. Machine IDs are returned as a result pulling fleet snapshot data. |
-|     `dataElement` | required | string  | Data element to be returned. |
+|     `identifier` | required | string  | OEM ISO Number (PIN or VIN). The identifiers are returned as a result pulling fleet snapshot data. |
+|     `dataElement` | required | string  | Data element to be returned (Locations, CumulativeOperatingHours, etc.). |
 |     `startDateUTC` | required | string  | Start date and time of the timeseries. <br/>All date and time stamps in an XML document shall be formatted as ISO 8601 (all parts) “date and time” that includes the year, month, day, hour, minutes, and seconds. It does not include fractional seconds.<br/>Date and Time are expressed as: YYYY-MM-DDThh:mm:ssZ. |
 |     `endDateUTC` | required | string  | End date and time of the timeseries. <br/>All date and time stamps in an XML document shall be formatted as ISO 8601 (all parts) “date and time” that includes the year, month, day, hour, minutes, and seconds. It does not include fractional seconds.<br/>Date and Time are expressed as: YYYY-MM-DDThh:mm:ssZ. |
 |     `pageNumber` | required | int  | Page number to be returned. <br/> MUSS be a positive non zero integer. <br/>This endpoint is paginated with 100 records per page. |
@@ -219,70 +215,434 @@ Get timeseries data of a data element of a machine.
 ```
 [
   {
-    "CumulativeOperatingHours": [
-      {
-        "Hour": 1848.65,
-        "datetime": "2023-02-09T06:30:00Z"
-      },
-      {
-        "Hour": 1848.7,
-        "datetime": "2023-02-09T06:35:00Z"
-      },
-      {
-        "Hour": 1848.8,
-        "datetime": "2023-02-09T06:40:00Z"
-      },
-      {
-        "Hour": 1848.9,
-        "datetime": "2023-02-09T06:45:00Z"
-      },
-      {
-        "Hour": 1848.95,
-        "datetime": "2023-02-09T06:50:00Z"
-      },
-      
-      ...
-
-      {
-        "Hour": 1856.55,
-        "datetime": "2023-02-09T15:10:00Z"
-      },
-      {
-        "Hour": 1856.65,
-        "datetime": "2023-02-09T15:15:00Z"
-      },
-      {
-        "Hour": 1856.8,
-        "datetime": "2023-02-09T15:20:00Z"
-      },
-      {
-        "Hour": 1856.9,
-        "datetime": "2023-02-09T15:25:00Z"
-      },
-      {
-        "Hour": 1857.0,
-        "datetime": "2023-02-09T15:30:00Z"
-      }
-    ],
-    "links": [
-      {
-        "rel": "self",
-        "href": "/Fleet/Equipment/510TS_15075/CumulativeOperatingHours/2023-02-09T00:00:00Z/2023-02-14T00:00:00Z/1"
-      },
-      {
-        "rel": "next",
-        "href": "/Fleet/Equipment/510TS_15075/CumulativeOperatingHours/2023-02-09T00:00:00Z/2023-02-14T00:00:00Z/2"
-      },
-      {
-        "rel": "prev",
-        "href": "/Fleet/Equipment/510TS_15075/CumulativeOperatingHours/2023-02-09T00:00:00Z/2023-02-14T00:00:00Z/1"
-      },
-      {
-        "rel": "last",
-        "href": "/Fleet/Equipment/510TS_15075/CumulativeOperatingHours/2023-02-09T00:00:00Z/2023-02-14T00:00:00Z/3"
-      }
-    ]
-  }
+  "CumulativeOperatingHours": [
+    {
+      "Hour": 3,
+      "datetime": "2022-09-23T17:15:39"
+    },
+    {
+      "Hour": 13,
+      "datetime": "2022-09-23T17:15:40"
+    },
+    {
+      "Hour": 23,
+      "datetime": "2022-09-23T17:15:41"
+    },
+    {
+      "Hour": 33,
+      "datetime": "2022-09-23T17:15:42"
+    },
+    {
+      "Hour": 43,
+      "datetime": "2022-09-23T17:15:43"
+    },
+    {
+      "Hour": 53,
+      "datetime": "2022-09-23T17:15:44"
+    },
+    {
+      "Hour": 63,
+      "datetime": "2022-09-23T17:15:45"
+    },
+    {
+      "Hour": 73,
+      "datetime": "2022-09-23T17:15:46"
+    },
+    {
+      "Hour": 83,
+      "datetime": "2022-09-23T17:15:47"
+    },
+    {
+      "Hour": 93,
+      "datetime": "2022-09-23T17:15:48"
+    },
+    {
+      "Hour": 103,
+      "datetime": "2022-09-23T17:15:49"
+    },
+    {
+      "Hour": 113,
+      "datetime": "2022-09-23T17:15:50"
+    },
+    {
+      "Hour": 123,
+      "datetime": "2022-09-23T17:15:51"
+    },
+    {
+      "Hour": 133,
+      "datetime": "2022-09-23T17:15:52"
+    },
+    {
+      "Hour": 143,
+      "datetime": "2022-09-23T17:15:53"
+    },
+    {
+      "Hour": 153,
+      "datetime": "2022-09-23T17:15:54"
+    },
+    {
+      "Hour": 163,
+      "datetime": "2022-09-23T17:15:55"
+    },
+    {
+      "Hour": 173,
+      "datetime": "2022-09-23T17:15:56"
+    },
+    {
+      "Hour": 183,
+      "datetime": "2022-09-23T17:15:57"
+    },
+    {
+      "Hour": 193,
+      "datetime": "2022-09-23T17:15:58"
+    },
+    {
+      "Hour": 203,
+      "datetime": "2022-09-23T17:15:59"
+    },
+    {
+      "Hour": 213,
+      "datetime": "2022-09-23T17:16:00"
+    },
+    {
+      "Hour": 223,
+      "datetime": "2022-09-23T17:16:01"
+    },
+    {
+      "Hour": 233,
+      "datetime": "2022-09-23T17:16:02"
+    },
+    {
+      "Hour": 243,
+      "datetime": "2022-09-23T17:16:03"
+    },
+    {
+      "Hour": 253,
+      "datetime": "2022-09-23T17:16:04"
+    },
+    {
+      "Hour": 263,
+      "datetime": "2022-09-23T17:16:05"
+    },
+    {
+      "Hour": 273,
+      "datetime": "2022-09-23T17:16:06"
+    },
+    {
+      "Hour": 283,
+      "datetime": "2022-09-23T17:16:07"
+    },
+    {
+      "Hour": 293,
+      "datetime": "2022-09-23T17:16:08"
+    },
+    {
+      "Hour": 303,
+      "datetime": "2022-09-23T17:16:09"
+    },
+    {
+      "Hour": 313,
+      "datetime": "2022-09-23T17:16:10"
+    },
+    {
+      "Hour": 323,
+      "datetime": "2022-09-23T17:16:11"
+    },
+    {
+      "Hour": 333,
+      "datetime": "2022-09-23T17:16:12"
+    },
+    {
+      "Hour": 343,
+      "datetime": "2022-09-23T17:16:13"
+    },
+    {
+      "Hour": 353,
+      "datetime": "2022-09-23T17:16:14"
+    },
+    {
+      "Hour": 363,
+      "datetime": "2022-09-23T17:16:15"
+    },
+    {
+      "Hour": 373,
+      "datetime": "2022-09-23T17:16:16"
+    },
+    {
+      "Hour": 383,
+      "datetime": "2022-09-23T17:16:17"
+    },
+    {
+      "Hour": 393,
+      "datetime": "2022-09-23T17:16:18"
+    },
+    {
+      "Hour": 403,
+      "datetime": "2022-09-23T17:16:19"
+    },
+    {
+      "Hour": 413,
+      "datetime": "2022-09-23T17:16:20"
+    },
+    {
+      "Hour": 423,
+      "datetime": "2022-09-23T17:16:21"
+    },
+    {
+      "Hour": 433,
+      "datetime": "2022-09-23T17:16:22"
+    },
+    {
+      "Hour": 443,
+      "datetime": "2022-09-23T17:16:23"
+    },
+    {
+      "Hour": 453,
+      "datetime": "2022-09-23T17:16:24"
+    },
+    {
+      "Hour": 463,
+      "datetime": "2022-09-23T17:16:25"
+    },
+    {
+      "Hour": 473,
+      "datetime": "2022-09-23T17:16:26"
+    },
+    {
+      "Hour": 483,
+      "datetime": "2022-09-23T17:16:27"
+    },
+    {
+      "Hour": 493,
+      "datetime": "2022-09-23T17:16:28"
+    },
+    {
+      "Hour": 503,
+      "datetime": "2022-09-23T17:16:29"
+    },
+    {
+      "Hour": 513,
+      "datetime": "2022-09-23T17:16:30"
+    },
+    {
+      "Hour": 523,
+      "datetime": "2022-09-23T17:16:31"
+    },
+    {
+      "Hour": 533,
+      "datetime": "2022-09-23T17:16:32"
+    },
+    {
+      "Hour": 543,
+      "datetime": "2022-09-23T17:16:33"
+    },
+    {
+      "Hour": 553,
+      "datetime": "2022-09-23T17:16:34"
+    },
+    {
+      "Hour": 563,
+      "datetime": "2022-09-23T17:16:35"
+    },
+    {
+      "Hour": 573,
+      "datetime": "2022-09-23T17:16:36"
+    },
+    {
+      "Hour": 583,
+      "datetime": "2022-09-23T17:16:37"
+    },
+    {
+      "Hour": 593,
+      "datetime": "2022-09-23T17:16:38"
+    },
+    {
+      "Hour": 603,
+      "datetime": "2022-09-23T17:16:39"
+    },
+    {
+      "Hour": 613,
+      "datetime": "2022-09-23T17:16:40"
+    },
+    {
+      "Hour": 623,
+      "datetime": "2022-09-23T17:16:41"
+    },
+    {
+      "Hour": 633,
+      "datetime": "2022-09-23T17:16:42"
+    },
+    {
+      "Hour": 643,
+      "datetime": "2022-09-23T17:16:43"
+    },
+    {
+      "Hour": 653,
+      "datetime": "2022-09-23T17:16:44"
+    },
+    {
+      "Hour": 663,
+      "datetime": "2022-09-23T17:16:45"
+    },
+    {
+      "Hour": 673,
+      "datetime": "2022-09-23T17:16:46"
+    },
+    {
+      "Hour": 683,
+      "datetime": "2022-09-23T17:16:47"
+    },
+    {
+      "Hour": 693,
+      "datetime": "2022-09-23T17:16:48"
+    },
+    {
+      "Hour": 703,
+      "datetime": "2022-09-23T17:16:49"
+    },
+    {
+      "Hour": 713,
+      "datetime": "2022-09-23T17:16:50"
+    },
+    {
+      "Hour": 723,
+      "datetime": "2022-09-23T17:16:51"
+    },
+    {
+      "Hour": 733,
+      "datetime": "2022-09-23T17:16:52"
+    },
+    {
+      "Hour": 743,
+      "datetime": "2022-09-23T17:16:53"
+    },
+    {
+      "Hour": 753,
+      "datetime": "2022-09-23T17:16:54"
+    },
+    {
+      "Hour": 763,
+      "datetime": "2022-09-23T17:16:55"
+    },
+    {
+      "Hour": 773,
+      "datetime": "2022-09-23T17:16:56"
+    },
+    {
+      "Hour": 783,
+      "datetime": "2022-09-23T17:16:57"
+    },
+    {
+      "Hour": 793,
+      "datetime": "2022-09-23T17:16:58"
+    },
+    {
+      "Hour": 803,
+      "datetime": "2022-09-23T17:16:59"
+    },
+    {
+      "Hour": 813,
+      "datetime": "2022-09-23T17:17:00"
+    },
+    {
+      "Hour": 823,
+      "datetime": "2022-09-23T17:17:01"
+    },
+    {
+      "Hour": 833,
+      "datetime": "2022-09-23T17:17:02"
+    },
+    {
+      "Hour": 843,
+      "datetime": "2022-09-23T17:17:03"
+    },
+    {
+      "Hour": 853,
+      "datetime": "2022-09-23T17:17:04"
+    },
+    {
+      "Hour": 863,
+      "datetime": "2022-09-23T17:17:05"
+    },
+    {
+      "Hour": 873,
+      "datetime": "2022-09-23T17:17:06"
+    },
+    {
+      "Hour": 883,
+      "datetime": "2022-09-23T17:17:07"
+    },
+    {
+      "Hour": 893,
+      "datetime": "2022-09-23T17:17:08"
+    },
+    {
+      "Hour": 903,
+      "datetime": "2022-09-23T17:17:09"
+    },
+    {
+      "Hour": 913,
+      "datetime": "2022-09-23T17:17:10"
+    },
+    {
+      "Hour": 923,
+      "datetime": "2022-09-23T17:17:11"
+    },
+    {
+      "Hour": 933,
+      "datetime": "2022-09-23T17:17:12"
+    },
+    {
+      "Hour": 943,
+      "datetime": "2022-09-23T17:17:13"
+    },
+    {
+      "Hour": 953,
+      "datetime": "2022-09-23T17:17:14"
+    },
+    {
+      "Hour": 963,
+      "datetime": "2022-09-23T17:17:15"
+    },
+    {
+      "Hour": 973,
+      "datetime": "2022-09-23T17:17:16"
+    },
+    {
+      "Hour": 983,
+      "datetime": "2022-09-23T17:17:17"
+    },
+    {
+      "Hour": 993,
+      "datetime": "2022-09-23T17:17:18"
+    }
+  ],
+  "EquipmentHeader": {
+    "UnitInstallDateTime": "2023-05-08T10:00:00.000Z",
+    "OEMName": "Rexroth",
+    "Model": "sweeperx200",
+    "EquipmentID": "sn50123",
+    "PIN": "SNP50123123456789"
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/Equipment/SNP50123123456789/CumulativeOperatingHours/2022-09-23T00:00:00/2022-09-23T23:00:00/1"
+    },
+    {
+      "rel": "next",
+      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/Equipment/SNP50123123456789/CumulativeOperatingHours/2022-09-23T00:00:00/2022-09-23T23:00:00/2"
+    },
+    {
+      "rel": "prev",
+      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/Equipment/SNP50123123456789/CumulativeOperatingHours/2022-09-23T00:00:00/2022-09-23T23:00:00/1"
+    },
+    {
+      "rel": "last",
+      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/Equipment/SNP50123123456789/CumulativeOperatingHours/2022-09-23T00:00:00/2022-09-23T23:00:00/2"
+    }
+  ]
+}
 ]
 
 or
