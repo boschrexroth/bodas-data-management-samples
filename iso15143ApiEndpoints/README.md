@@ -6,8 +6,6 @@ These endpoints allow you to pull data from your Bodas Connec Data Portal.
 
 The [ISO 15143-3](https://www.iso.org/standard/67556.html) standard describes how to send status data from a telematics provider's server to third-party client applications over the Internet. 
 
-The OEM ISO Number (machine VIN = Vehicle Identification Number or PIN = Personal Identification Number) is used as identifier for pulling data.
-
 ## Authentication
 For information (see the list below) about using the [REST API Endpoints](#endpoints), please contact your instance owner.
 Following information are needed:
@@ -19,26 +17,27 @@ Following information are needed:
 - fleetId: Your fleet ID 
 
 ## Endpoints
-There are two classifications of endpoints: snapshot (fleet or single piece of equipment) and timeseries.
+There are two classifications of endpoints: snapshot (fleet or single piece of equipment) and timeseries. 
+The OEM ISO Number (machine VIN = Vehicle Identification Number or PIN = Personal Identification Number) is used as identifier for pulling the data.
 
 Base URL: https://bosch-iot-insights.com/r/{projectId}/bodas/
 
 - Fleet snapshot [{fleetId}/Fleet/{pageNumber}](#get-{fleetId}Fleet{pageNumber}) <br/>
-- Machine (Single-element) snapshot [{fleetId}/Fleet/Equipment/{machineID}](#get-{fleetId}FleetEquipment{identifier}) <br/>
-- Timeseries data [{fleetId}/Fleet/Equipment/{machineID}/{dataElement}/{startDateUTC}/{endDateUTC}/{pageNumber}](#get-{fleetId}FleetEquipment{identifier}{dataElement}{startDateUTC}{endDateUTC}{pageNumber}) <br/>
+- Machine (Single-element) snapshot [{fleetId}/Fleet/Equipment/{identifier}](#get-{fleetId}FleetEquipment{identifier}) <br/>
+- Timeseries data [{fleetId}/Fleet/Equipment/{identifier}/{dataElement}/{startDateUTC}/{endDateUTC}/{pageNumber}](#get-{fleetId}FleetEquipment{identifier}{dataElement}{startDateUTC}{endDateUTC}{pageNumber}) <br/>
 
 ___
 
 ### GET {fleetId}/Fleet/{pageNumber}
 
-Get a snaphots of all machines in the fleet.
+Get a snaphot of all machines in the fleet.
 
 **Parameters**
 
 |          Name | Required |  Type   | Description  |
 | -------------:|:--------:|:-------:| -------- |
 |     `fleetId` | required | string  | Bodas Connect ID of your fleet. |
-|     `pageNumber` | required | int  | Page number to be returned. <br/> MUSS be a positive non zero integer. <br/>This endpoint is paginated with 100 records per page. |
+|     `pageNumber` | required | int  | Page number to be returned. <br/> MUST be a positive non zero integer. <br/>This endpoint is paginated with 100 records per page. |
 
 **Response Sample**
 In this example, the fleet has 2 machines.
@@ -151,14 +150,14 @@ ___
 
 ### GET {fleetId}/Fleet/Equipment/{identifier}
 
-Get snapshot of all data elements of a machine. This endpoint provides a snapshot view of a single element. This endpoint is paginated with a default of 100 records per page. 
+Get a snapshot view of a single element. This endpoint is paginated with a default of 100 records per page. 
 
 **Parameters**
 
 |          Name | Required |  Type   | Description  |
 | -------------:|:--------:|:-------:| -------- |
 |     `fleetId` | required | string  | Bodas Connect ID of your fleet. |
-|     `identifier` | required | string  |  OEM ISO Number (PIN or VIN). The identifiers are returned as a result pulling fleet snapshot data. |
+|     `identifier` | required | string  |  OEM ISO Number (PIN or VIN). The identifiers are returned as a result of pulling fleet snapshot data. |
 
 **Response Sample**
 
@@ -208,7 +207,7 @@ Get a view into telematics data for a single construction machine over the speci
 |     `dataElement` | required | string  | Data element to be returned (Locations, CumulativeOperatingHours, etc.). |
 |     `startDateUTC` | required | string  | Start date and time of the timeseries. <br/>All date and time stamps in an XML document shall be formatted as ISO 8601 (all parts) “date and time” that includes the year, month, day, hour, minutes, and seconds. It does not include fractional seconds.<br/>Date and Time are expressed as: YYYY-MM-DDThh:mm:ssZ. |
 |     `endDateUTC` | required | string  | End date and time of the timeseries. <br/>All date and time stamps in an XML document shall be formatted as ISO 8601 (all parts) “date and time” that includes the year, month, day, hour, minutes, and seconds. It does not include fractional seconds.<br/>Date and Time are expressed as: YYYY-MM-DDThh:mm:ssZ. |
-|     `pageNumber` | required | int  | Page number to be returned. <br/> MUSS be a positive non zero integer. <br/>This endpoint is paginated with 100 records per page. |
+|     `pageNumber` | required | int  | Page number to be returned. <br/> MUST be a positive non zero integer. <br/>This endpoint is paginated with 100 records per page. |
 
 **Response Sample**
 
@@ -659,5 +658,5 @@ or
 |     `400` | Bad Request |
 |     `401` | Unauthorized |
 |     `403` | Forbidden |
-|     `404` | Not Found or you do not have access to the fleet/machine |
+|     `404` | Not Found or you do not have access to the fleet/identifier |
 
