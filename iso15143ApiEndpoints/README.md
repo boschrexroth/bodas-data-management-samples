@@ -4,7 +4,8 @@ These endpoints allow you to pull data from your Bodas Connec Data Portal.
 
 ## Extended ISO 15143
 
-The [ISO Standard 15143-3](#https://www.iso.org/standard/67556.html) The standard describes how to send status data from a telematics provider's server to third-party client applications over the Internet. 
+The [ISO Standard 15143-3](#https://www.iso.org/standard/67556.html) 
+The standard describes how to send status data from a telematics provider's server to third-party client applications over the Internet. 
 
 The OEM ISO Number (machine VIN = Vehicle Identification Number or PIN = Personal Identification Number) is used as identifier for pulling data.
 
@@ -14,7 +15,7 @@ Following information are needed:
 
 - Client ID: OAuth2 client ID of your fleet,
 - Client secret: OAuth2 secret of your fleet,
-- scope: OAuth2 scope of your fleet,
+- Scope: OAuth2 scope of your fleet,
 - projectID: Bodas Connect project ID,
 - fleetId: Your fleet ID 
 
