@@ -4,18 +4,18 @@ These endpoints allow you to pull data from your Bodas Connec Data Portal.
 
 ## Extended ISO 15143
 
-The [ISO Standard 15143-3](#https://www.iso.org/standard/67556.html) The standard describes how to send status data from a telematics provider's server to third-party client applications over the Internet. Furthermore, Bodas Connect provides additional data elements based on the data uploaded by your machines. To get the extended list of additional data elements, contact your Bodas Connect instance owner.
-
-In this version the Bodas Connect machine ID is used for pulling data instead of using the machine VIN/PIN.
+The [ISO Standard 15143-3](#https://www.iso.org/standard/67556.html) The standard describes how to send status data from a telematics provider's server to third-party client applications over the Internet. Furthermore, Bodas Connect provides additional data elements based on the data uploaded by your machines. 
+The OEM ISO NUmber (machine VIN (Vehicle Identification Number) or PIN (Personal Identification Number)) is used as identifier for pulling data.
 
 ## Authentication
 For information (see the list below) about using the [REST API Endpoints](#endpoints), please contact your instance owner.
+Following information are needed:
 
-- clientID: Oauth2 client ID of your fleet,
-- secret: Oauth2 secret of your fleet,
-- scope: Oauth2 scope of your fleet,
+- Client ID: OAuth2 client ID of your fleet,
+- Client secret: OAuth2 secret of your fleet,
+- scope: OAuth2 scope of your fleet,
 - projectID: Bodas Connect project ID,
-- fleetID: Your fleet ID
+- fleetId: Your fleet ID 
 
 ## Endpoints
 Base URL: https://bosch-iot-insights.com/r/{projectId}/bodas/
