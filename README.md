@@ -52,7 +52,7 @@ All sample codes are distributed under the MIT License. See [LICENSE](https://op
 
 BODAS Connect Team - Connect.BODAS@boschrexroth.de
 
-Project Link: [BODAS Connect](https://www.boschrexroth.com/de/de/transforming-mobile-machines/elektronifizierung-und-iot/)
+Project Link: [BODAS Connect](https://store.boschrexroth.com/Mobilelektronik-und-Telematik/BODAS-Connect?cclcl=en_DE)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
