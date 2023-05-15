@@ -4,8 +4,7 @@ These endpoints allow you to pull data from your Bodas Connec Data Portal.
 
 ## ISO 15143-3 (AEMP 2.0)
 
-The [ISO Standard 15143-3](https://www.iso.org/standard/67556.html) 
-The standard describes how to send status data from a telematics provider's server to third-party client applications over the Internet. 
+The [ISO Standard 15143-3](https://www.iso.org/standard/67556.html) standard describes how to send status data from a telematics provider's server to third-party client applications over the Internet. 
 
 The OEM ISO Number (machine VIN = Vehicle Identification Number or PIN = Personal Identification Number) is used as identifier for pulling data.
 
