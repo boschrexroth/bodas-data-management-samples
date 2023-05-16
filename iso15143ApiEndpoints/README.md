@@ -1,6 +1,6 @@
 # API endpoints
 
-These endpoints allow you to pull data from your Bodas Connec Data Portal.
+These endpoints allow you to pull data from your Bodas Connect Data Portal.
 
 ## ISO 15143-3 (AEMP 2.0)
 
