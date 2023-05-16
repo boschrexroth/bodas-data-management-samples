@@ -5,7 +5,7 @@ class BodasApiManagement:
     @staticmethod
     def getToken(clientID, secret, scope):
 
-        print("Request acces token for your data portal!")
+        print("Request access token for your data portal!")
 
         url = "https://access.bosch-iot-suite.com/token"
 
@@ -45,11 +45,11 @@ class BodasApiManagement:
         return response
 
     @staticmethod
-    def getMachineSnaphot(token, projectID, fleetID, machineID):
+    def getMachineSnaphot(token, projectID, fleetID, identifier):
 
-        print("Pull data machine snapshot of " + machineID + " !")
+        print("Pull data machine snapshot of machine ID with identifier (PIN or VIN) " + identifier + " !")
 
-        url = "https://bosch-iot-insights.com/r/" + projectID + "/bodas/" + fleetID + "/Fleet/Equipment/" + machineID
+        url = "https://bosch-iot-insights.com/r/" + projectID + "/bodas/" + fleetID + "/Fleet/Equipment/" + identifier
 
         print(url)
 
@@ -67,11 +67,11 @@ class BodasApiManagement:
         return response
 
     @staticmethod
-    def getTimeSeries(token, projectID, fleetID, machineID, dataElement, startDateTime, endDateTime, pageNumber):
+    def getTimeSeries(token, projectID, fleetID, identifier, dataElement, startDateUTC, endDateUTC, pageNumber):
 
         print("Pull data!")
         
-        url = "https://bosch-iot-insights.com/r/" + projectID + "/bodas/" + fleetID + "/Fleet/Equipment/" + machineID + "/" + dataElement + "/" + startDateTime + "/" + endDateTime + "/" + str(pageNumber)
+        url = "https://bosch-iot-insights.com/r/" + projectID + "/bodas/" + fleetID + "/Fleet/Equipment/" + identifier + "/" + dataElement + "/" + startDateTime + "/" + endDateTime + "/" + str(pageNumber)
 
         print(url)
 

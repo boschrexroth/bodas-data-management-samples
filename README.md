@@ -39,12 +39,12 @@ Some topics are not covered by this programming guides and are prerequisites for
 
 ## Sample Codes
 
-* [iso15143ApiEndpoints](#) -- Pull machine and fleet data with an extended version of [ISO Standard 15143-3](#https://www.iso.org/standard/67556.html)
+* [iso15143ApiEndpoints](#) -- Pull machine and fleet data with [ISO Standard 15143-3](https://www.iso.org/standard/67556.html)
 
 <!-- LICENSE -->
 ## License
 
-All sample codes are distributed under the MIT License. See `LICENSE` for more information.
+All sample codes are distributed under the MIT License. See [LICENSE](https://opensource.org/license/mit/) for more information.
 
 
 <!-- CONTACT -->
@@ -52,7 +52,7 @@ All sample codes are distributed under the MIT License. See `LICENSE` for more i
 
 BODAS Connect Team - Connect.BODAS@boschrexroth.de
 
-Project Link: [BODAS Connect](https://apps.boschrexroth.com/rexroth/en/transforming-mobile-machines/bodas-connect/)
+Project Link: [BODAS Connect](https://store.boschrexroth.com/Mobilelektronik-und-Telematik/BODAS-Connect?cclcl=en_DE)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements

@@ -1,40 +1,42 @@
 from apiManagement import BodasApiManagement
 import sys
 import json
-import pylab as plt
 from datetime import datetime
+#used for displaying the timeseries data 
+#import pylab as plt
 
 class Main:
   @staticmethod
   def collectData(argv):
-    
+    # client OAuth2 credentials 
     clientID = ""
     secret = ""
     scope = ""
     projectID = ""
     fleetID = ""
-    machineID = ""
+    identifier = ""
 
     token = BodasApiManagement.getToken(clientID, secret, scope)
 
     print("##")
-    pageNumber = 2
+    pageNumber = 1
     result = BodasApiManagement.getFleetSnaphot(token, projectID, fleetID, pageNumber)
     print(json.dumps(result.json(), indent=2))
 
     print("")
     print("##")
-    result = BodasApiManagement.getMachineSnaphot(token, projectID, fleetID, machineID)
+    result = BodasApiManagement.getMachineSnaphot(token, projectID, fleetID, identifier)
     print(json.dumps(result.json(), indent=2))
 
     print("")
     print("##")
     dataElement = "CumulativeOperatingHours"
     valueField = "Hour"
-    startDateTime = "2023-02-09T00:00:00Z"
-    endDateTime = "2023-02-14T00:00:00Z"
+    #include here the
+    startDateUTC = "2022-09-23T00:00:00"
+    endDateUTC = "2022-09-23T23:00:00"
     pageNumber = 1
-    result = BodasApiManagement.getTimeSeries(token, projectID, fleetID, machineID, dataElement, startDateTime, endDateTime, pageNumber)
+    result = BodasApiManagement.getTimeSeries(token, projectID, fleetID, identifier, dataElement, startDateUTC, endDateUTC, pageNumber)
     timeSeriesData = result.json()
     print(json.dumps(timeSeriesData, indent=2))
 
@@ -49,12 +51,13 @@ class Main:
         
             for data in timeSeriesDataElement[dataElement]:
                 
-                dateTimeArray.append(datetime.strptime(data["datetime"], '%Y-%m-%dT%H:%M:%SZ'))
+                dateTimeArray.append(datetime.strptime(data["datetime"], '%Y-%m-%dT%H:%M:%S'))
                 valueArray.append(data[valueField])
 
-            fig, ax = plt.subplots()
+            # use to display data
+            """ fig, ax = plt.subplots()
             ax.plot(dateTimeArray, valueArray, color = 'b')
-            plt.show()
+            plt.show() """
 
 if __name__ == "__main__":
     Main.collectData(sys.argv[1:])
