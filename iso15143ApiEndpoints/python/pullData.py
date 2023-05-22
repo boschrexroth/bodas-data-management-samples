@@ -33,8 +33,8 @@ class Main:
     dataElement = "CumulativeOperatingHours"
     valueField = "Hour"
     #include here the
-    startDateUTC = "2022-09-23T00:00:00"
-    endDateUTC = "2022-09-23T23:00:00"
+    startDateUTC = "YYYY-MM-DDTHH:MM:SS"
+    endDateUTC = "YYYY-MM-DDTHH:MM:SS"
     pageNumber = 1
     result = BodasApiManagement.getTimeSeries(token, projectID, fleetID, identifier, dataElement, startDateUTC, endDateUTC, pageNumber)
     timeSeriesData = result.json()
