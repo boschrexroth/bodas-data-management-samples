@@ -23,7 +23,7 @@
 <!-- ABOUT THE PROJECT -->
 ## Introduction
 
-This guide provides sample codes that you can reuse for pulling/pushing data from/to your BODAS Connect Data Management Instance. This guide will not show you how to implement your functionality. The examples are written in Python. Example written in other languages will be added soon.
+This guide provides sample codes that you can reuse for pulling/pushing data from/to your BODAS Connect Data Management Instance. This guide will not show you how to implement your functionality. The examples are written in Python. Example written in other languages may be added later.
 
 
 <!-- GETTING STARTED -->
@@ -52,7 +52,7 @@ All sample codes are distributed under the MIT License. See [LICENSE](https://op
 
 BODAS Connect Team - Connect.BODAS@boschrexroth.de
 
-Project Link: [BODAS Connect](https://store.boschrexroth.com/Mobilelektronik-und-Telematik/BODAS-Connect?cclcl=en_DE)
+Project Link: [BODAS Connect](https://www.boschrexroth.com/en/us/transforming-mobile-machines/electronification-and-iot/bodas-connect/)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
