@@ -100,19 +100,19 @@ In this example, the fleet has 2 machines.
   "links": [
     {
       "rel": "self",
-      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/1"
+      "href": "/{fleetId}/Fleet/1"
     },
     {
       "rel": "next",
-      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/1"
+      "href": "/{fleetId}/Fleet/1"
     },
     {
       "rel": "prev",
-      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/1"
+      "href": "/{fleetId}/Fleet/1"
     },
     {
       "rel": "last",
-      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/1"
+      "href": "/{fleetId}/Fleet/1"
     }
   ]
 }
@@ -127,19 +127,19 @@ or
   "links": [
     {
       "rel": "self",
-      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/2"
+      "href": "/{fleetId}/Fleet/2"
     },
     {
       "rel": "next",
-      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/1"
+      "href": "/{fleetId}/Fleet/1"
     },
     {
       "rel": "prev",
-      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/1"
+      "href": "/{fleetId}/Fleet/1"
     },
     {
       "rel": "last",
-      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/1"
+      "href": "/{fleetId}/Fleet/1"
     }
   ]
 }
@@ -239,19 +239,19 @@ Get a view into telematics data for a single construction machine over the speci
   "links": [
     {
       "rel": "self",
-      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/Equipment/SNP50123123456789/CumulativeOperatingHours/2023-05-12T00:00:00/2023-05-12T23:59:00/1"
+      "href": "/{fleetId}/Fleet/Equipment/SNP50123123456789/CumulativeOperatingHours/2023-05-12T00:00:00/2023-05-12T23:59:00/1"
     },
     {
       "rel": "next",
-      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/Equipment/SNP50123123456789/CumulativeOperatingHours/2023-05-12T00:00:00/2023-05-12T23:59:00/2"
+      "href": "/{fleetId}/Fleet/Equipment/SNP50123123456789/CumulativeOperatingHours/2023-05-12T00:00:00/2023-05-12T23:59:00/2"
     },
     {
       "rel": "prev",
-      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/Equipment/SNP50123123456789/CumulativeOperatingHours/2023-05-12T00:00:00/2023-05-12T23:59:00/1"
+      "href": "/{fleetId}/Fleet/Equipment/SNP50123123456789/CumulativeOperatingHours/2023-05-12T00:00:00/2023-05-12T23:59:00/1"
     },
     {
       "rel": "last",
-      "href": "/pvz1481:fleet__bc420002fbqv8d/Fleet/Equipment/SNP50123123456789/CumulativeOperatingHours/2023-05-12T00:00:00/2023-05-12T23:59:00/2"
+      "href": "/{fleetId}/Fleet/Equipment/SNP50123123456789/CumulativeOperatingHours/2023-05-12T00:00:00/2023-05-12T23:59:00/2"
     }
   ]
 }
@@ -271,5 +271,4 @@ or
 |     `400` | Bad Request |
 |     `401` | Unauthorized |
 |     `403` | Forbidden |
-|     `404` | Not Found or you do not have access to the fleet/identifier |
-
+|     `404` | Not Found / No access |
