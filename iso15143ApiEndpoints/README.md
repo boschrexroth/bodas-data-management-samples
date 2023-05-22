@@ -49,8 +49,8 @@ In this example, the fleet has 2 machines.
     {
       "Location": {
         "datetime": "2023-05-08T17:17:39.666Z",
-        "Latitude": 48.479507,
-        "Longitude": 8.929208,
+        "Latitude": 48.4....3,
+        "Longitude": 8.9....8,
         "Altitude": 424,
         "AltitudeUnits": "meter"
       },
@@ -74,8 +74,8 @@ In this example, the fleet has 2 machines.
     {
       "Location": {
         "datetime": "2022-05-12T17:17:39.666Z",
-        "Latitude": 48.479507,
-        "Longitude": 8.929208,
+        "Latitude": 48.4....3,
+        "Longitude": 8.9....8,
         "Altitude": 424,
         "AltitudeUnits": "meter"
       },
@@ -171,8 +171,8 @@ Get a snapshot view of a single element. This endpoint is paginated with a defau
   },
   "Location": {
     "datetime": "2023-05-12T17:17:39.666Z",
-    "Latitude": 48.479507,
-    "Longitude": 8.929208,
+    "Latitude": 48.4....3,
+    "Longitude": 8.9....8,
     "Altitude": 424,
     "AltitudeUnits": "meter"
   },
